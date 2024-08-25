@@ -8,9 +8,9 @@ class Synera_BatteryPackCalculator_InputFormPage extends Synera_BatteryPackCalcu
         super();
         this.designSpaceInputComboxBox= null;
         this.batteryCellInputComboBox = null;
-
     }
 
+    // create seperate method intialize because the browser must be intialized before calling this thats why not called in consturctor
      Intialize()
     {
         this.designSpaceInputComboxBox = this.getDesignSpaceComboBox();
