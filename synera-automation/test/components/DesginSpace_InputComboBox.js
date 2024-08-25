@@ -1,10 +1,10 @@
 import SyneraInputFormComboBox from "./SyneraInputFormComboBox";
-class DesignSpaceInputComboBox
+class DesignSpaceInputComboBox extends SyneraInputFormComboBox
 {    
-    constructor()
+    constructor(browser)
     {
         const designSpacetestId = "slt7dc378ce-b72f-4997-9c35-9973bee081d3";
-        designSpaceComboxBox = new SyneraInputFormComboBox(designSpacetestId);
+        super(designSpacetestId,browser);
     }
 
 
