@@ -1,15 +1,16 @@
 class SyneraInputFormComboBox{
     constructor(testId) {
-        this.component = $(`[data-testid="${testId}"]`);
+        this.comboBox = $(`[data-testid="${testId}"]`);
     }
 
-    async getAutocompleteText() {
-        await this.component.waitForDisplayed();
+    async getComboBoxText() {
+        await this.comboBox.waitForDisplayed();
 
-        const autocompleteTextElement = await this.component.$('.v-autocomplete__selection .v-autocomplete__selection-text');
+        const autocompleteTextElement = await this.comboBox.$('.v-autocomplete__selection .v-autocomplete__selection-text');
 
         await autocompleteTextElement.waitForDisplayed();
 
         return await autocompleteTextElement.getText();
     }
 }
+export default SyneraInputFormComboBox;
