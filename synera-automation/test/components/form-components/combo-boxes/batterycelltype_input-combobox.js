@@ -1,4 +1,4 @@
-import SyneraInputFormComboBox from "./SyneraInputFormComboBox";
+import SyneraInputFormComboBox from "../../base-components/synera-inputform-combobox";
 class BatteryCellTypeInputComboBox extends SyneraInputFormComboBox
 {    
     constructor(browser)

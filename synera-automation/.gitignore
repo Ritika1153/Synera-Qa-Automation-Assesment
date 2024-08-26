@@ -6,6 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 
 e2e/node_modules
+/node_modules
+package-lock.json
+/package-lock.json
 # Runtime data
 pids
 *.pid
@@ -68,7 +71,7 @@ tests/typings/**/dist
 packages/**/cjs/
 !packages/**/src/cjs/
 !packages/**/cjs/package.json
-/*.js
+
 /*.mjs
 /*.ts
 !.eslintrc.js
@@ -76,6 +79,8 @@ packages/**/cjs/
 packages/**/package-lock.json
 .DS_Store
 e2e/screenshot.pdf
+
+
 
 website/translated_docs
 website/build/
