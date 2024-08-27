@@ -1,4 +1,4 @@
-import SyneraInputFormComboBox from "../../base-components/synera-inputform-combobox";
+import SyneraInputFormComboBox from "../../../base-components/synera-inputform-combobox";
 class DesignSpaceInputComboBox extends SyneraInputFormComboBox
 {
    

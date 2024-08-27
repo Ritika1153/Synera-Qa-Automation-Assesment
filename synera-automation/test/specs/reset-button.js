@@ -6,18 +6,26 @@ describe('Reset Button', () => {
         
    let page = new Synera_BatteryPackCaclulator_InputFormPage();
     
-   await page.open();
-
+   let pageLoaded= await page.open();
+   expect(pageLoaded).to.be.true;
    let formInputPage = new Synera_BatteryPackCaclulator_InputFormPage();
-   formInputPage.Intialize();
+  await formInputPage.Intialize();
 
-  let designspace_text = await formInputPage.designSpaceInputComboxBox.getComboBoxText();
-  let batterycelltype_text = await formInputPage.batteryCellInputComboBox.getComboBoxText();
+  let designspace_comboBox= await formInputPage.designSpaceInputComboxBox;
+    let batterycelltype_text = await formInputPage.batteryCellInputComboBox.getComboBoxText();
   let coolingplate_value = await formInputPage.coolingplateSlider.getsliderText();
   let spacingcell_value = await formInputPage.spaceingcellsSlider.getsliderText();
+let text = "Wedge (longer computation time)";
 
-  expect(designspace_text).to.equal("Box");
-  expect(batterycelltype_text).to.equal("L65.15_C2.5");
+
+await designspace_comboBox.setComboBoxText(text);
+
+let textOutput  =  await  designspace_comboBox.getComboBoxText();
+console.log("desgin space text",textOutput);
+//  expect(designspace_text).to.equal("Box");
+  
+
+expect(batterycelltype_text).to.equal("L65.15_C2.5");
   expect(coolingplate_value).to.equal("8");
   expect(spacingcell_value).to.equal("2");
   

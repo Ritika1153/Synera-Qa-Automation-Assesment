@@ -1,6 +1,6 @@
-import DesignSpaceInputComboBox from "../components/form-components/combo-boxes/designspace-input-comboBox";
+import DesignSpaceInputComboBox from "../components/form-components/sliders/combo-boxes/designspace-input-comboBox";
 import Synera_BatteryPackCalculator_Page from "./synera_batterypackcalculator_page";
-import BatteryCellTypeInputComboBox from "../components/form-components/combo-boxes/batterycelltype_input-combobox";
+import BatteryCellTypeInputComboBox from "../components/form-components/sliders/combo-boxes/batterycelltype_input-combobox";
 import CoolingPlate_Slider from "../components/form-components/sliders/CoolingPlate-Slider";
 import SpacingCells_Slider from "../components/form-components/sliders/SpacingCells-Slider";
 class Synera_BatteryPackCalculator_InputFormPage extends Synera_BatteryPackCalculator_Page {
@@ -15,7 +15,7 @@ class Synera_BatteryPackCalculator_InputFormPage extends Synera_BatteryPackCalcu
     }
 
     // create seperate method intialize because the browser must be intialized before calling this thats why not called in consturctor
-     Intialize()
+     async Intialize()
     {
         this.designSpaceInputComboxBox = this.getDesignSpaceComboBox();
         this.batteryCellInputComboBox = this.getBatteryCellTypeComboBox();
