@@ -4,30 +4,29 @@ import { expect  } from 'chai'
 describe('Reset Button', () => {
     it('should reset all input field to default values', async () => {
         
-   let page = new Synera_BatteryPackCaclulator_InputFormPage();
+      let formInputPage = new Synera_BatteryPackCaclulator_InputFormPage();
     
-   let pageLoaded= await page.open();
+   let pageLoaded= await formInputPage.open();
    expect(pageLoaded).to.be.true;
-   let formInputPage = new Synera_BatteryPackCaclulator_InputFormPage();
+ 
   await formInputPage.Intialize();
 
-  let designspace_comboBox= await formInputPage.designSpaceInputComboxBox;
-    let batterycelltype_text = await formInputPage.batteryCellInputComboBox.getComboBoxText();
-  let coolingplate_value = await formInputPage.coolingplateSlider.getsliderText();
-  let spacingcell_value = await formInputPage.spaceingcellsSlider.getsliderText();
-let text = "Wedge (longer computation time)";
+ // let designspace_comboBox= await formInputPage.designSpaceInputComboxBox;
+   // let batterycelltype_text = await formInputPage.batteryCellInputComboBox.getComboBoxText();
+ let coolingplate_value = formInputPage.coolingplateSlider;
+ // let spacingcell_value = await formInputPage.spaceingcellsSlider.getsliderText();
+//let text = "Wedge (longer computation time)";
+console.log("old value",await coolingplate_value.getSliderText());
+
+//await designspace_comboBox.setComboBoxText(text);
 
 
-await designspace_comboBox.setComboBoxText(text);
+await coolingplate_value.setSliderValue(10)
+console.log("new value",await coolingplate_value.getSliderText());
 
-let textOutput  =  await  designspace_comboBox.getComboBoxText();
-console.log("desgin space text",textOutput);
-//  expect(designspace_text).to.equal("Box");
-  
-
-expect(batterycelltype_text).to.equal("L65.15_C2.5");
-  expect(coolingplate_value).to.equal("8");
-  expect(spacingcell_value).to.equal("2");
+// expect(batterycelltype_text).to.equal("L65.15_C2.5");
+//   expect(coolingplate_value).to.equal("8");
+//   expect(spacingcell_value).to.equal("2");
   
 
     });

@@ -1,6 +1,5 @@
 
 import SyneraInputFormSlider from "../../base-components/synera-inputform-slider";
-
 class SpacingCells_Slider extends SyneraInputFormSlider
 {
 
