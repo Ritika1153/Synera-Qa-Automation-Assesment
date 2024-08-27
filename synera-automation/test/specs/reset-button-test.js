@@ -5,35 +5,54 @@ import DefaultValues from "../constants/default-values";
 describe('Reset Button', () => {
     it('should reset all input field to default values', async () => {
         
-      let formInputPage = new Synera_BatteryPackCaclulator_InputFormPage();
-    
+    let formInputPage = new Synera_BatteryPackCaclulator_InputFormPage();
    let pageLoaded= await formInputPage.open();
    expect(pageLoaded).to.be.true;
  
   await formInputPage.Intialize();
 
-  let designspace_comboBox= formInputPage.designSpaceInputComboxBox;
-    let batterycelltype_text = formInputPage.batteryCellInputComboBox;
- let coolingplate_value = formInputPage.coolingplateSlider;
- let spacingcell_value = formInputPage.spaceingcellsSlider.getSliderText();
-//let text = "Wedge (longer computation time)";
-//console.log("old value",await coolingplate_value.getSliderText());
+  //declare all components
+let designspace_comboBox= formInputPage.designSpaceInputComboxBox;
+let batterycelltype_comboBox = formInputPage.batteryCellInputComboBox;
+ let coolingplate_slider = formInputPage.coolingplateSlider;
+ let spacingcell_slider = formInputPage.spaceingcellsSlider;
+ let resetButton = formInputPage.resetButton;
 
-//await designspace_comboBox.setComboBoxText(text);
+ //update values
+ await designspace_comboBox.setComboBoxText("Panel (longer computation time)");
+ await batterycelltype_comboBox.setComboBoxText("L52.4_C2.3");
+ await coolingplate_slider.setSliderValue("19")
+ await spacingcell_slider.setSliderValue("7");
 
-await coolingplate_value.setSliderValue("10");
-let val =  await coolingplate_value.getSliderText();
-console.log("set value",val)
+// print values after update debug purpose
 
-//await coolingplate_value.setSliderValue(10)
-//console.log("new value",await coolingplate_value.getSliderText());
- await formInputPage.resetButton.click();
+console.log("Updated value of space Combo box", await designspace_comboBox.getComboBoxText())
+console.log("Updated value of batterycellType Combo box", await batterycelltype_comboBox.getComboBoxText())
+console.log("Updated value of coolingplate slider", await coolingplate_slider.getSliderText())
+console.log("Updated value of spacingcell slider box", await spacingcell_slider.getSliderText())
 
- let updatedValue =  await coolingplate_value.getSliderText();
-console.log("updated value",updatedValue)
-// expect(batterycelltype_text).to.equal("L65.15_C2.5");
-//   expect(coolingplate_value).to.equal("8");
-//   expect(spacingcell_value).to.equal("2");
+//click reset button to reset value
+ await resetButton.click();
+
+
+ // print values after Reset debug purpose
+
+ const designspace_value = await  designspace_comboBox.getComboBoxText();
+  const battery_cell_type_value =  await batterycelltype_comboBox.getComboBoxText();
+  const cooling_plate_slider_value = await coolingplate_slider.getSliderText();
+  const spacing_cell_slider_value = await spacingcell_slider.getSliderText();
+console.log("Updated value of space Combo box after Reset", designspace_value)
+console.log("Updated value of batterycellType Combo box after Reset",battery_cell_type_value)
+console.log("Updated value of coolingplate slider after Reset", cooling_plate_slider_value)
+console.log("Updated value of spacingcell slider box after Reset" , spacing_cell_slider_value)
+
+ //Add Assertion to be equal to Default
+
+
+  expect(designspace_value).to.equal(DefaultValues.DESIGN_SPACE);
+  expect(battery_cell_type_value).to.equal(DefaultValues.BATTERY_CELL_TYPE);
+  expect(cooling_plate_slider_value).to.equal(DefaultValues.COOLING_PLATE_HEIGHT);
+  expect(spacing_cell_slider_value).to.equal(DefaultValues.SPACING_BTW_CELLS);
   
 
     });
