@@ -32,11 +32,8 @@ class SyneraInputFormComboBox {
             input.value = '';
         }, inputField);
 
-        // Set the new value
+   
         await inputField.setValue(newText);
-
-        await browser.pause(500);  
-
         await browser.keys(['ArrowDown']); 
         await browser.keys(['Enter']);     
     
