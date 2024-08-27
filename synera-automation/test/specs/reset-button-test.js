@@ -11,10 +11,10 @@ describe('Reset Button', () => {
  
   await formInputPage.Intialize();
 
- // let designspace_comboBox= await formInputPage.designSpaceInputComboxBox;
-   // let batterycelltype_text = await formInputPage.batteryCellInputComboBox.getComboBoxText();
+  let designspace_comboBox= formInputPage.designSpaceInputComboxBox;
+    let batterycelltype_text = formInputPage.batteryCellInputComboBox;
  let coolingplate_value = formInputPage.coolingplateSlider;
- // let spacingcell_value = await formInputPage.spaceingcellsSlider.getsliderText();
+ let spacingcell_value = formInputPage.spaceingcellsSlider.getsliderText();
 //let text = "Wedge (longer computation time)";
 console.log("old value",await coolingplate_value.getSliderText());
 
