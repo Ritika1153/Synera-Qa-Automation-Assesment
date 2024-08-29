@@ -6,15 +6,15 @@ class SyneraInputFormSlider{
 
     async getSliderText() {
 
-        const autocompleteComponent = await browser.$(this.slider);
+        const sliderComponent = await browser.$(this.slider);
         
-        await autocompleteComponent.waitForDisplayed();
+        await sliderComponent.waitForDisplayed();
 
-        const autocompleteTextElement = await autocompleteComponent.$('.slider-label');
+        const sliderValueComponent = await sliderComponent.$('.slider-label');
 
-       await autocompleteTextElement.waitForDisplayed();
+       await sliderValueComponent.waitForDisplayed();
 
-        let text= await autocompleteTextElement.getText();
+        let text= await sliderValueComponent.getText();
         return text;
     }
 

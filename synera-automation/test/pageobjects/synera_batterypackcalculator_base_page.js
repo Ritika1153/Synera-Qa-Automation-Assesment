@@ -52,6 +52,20 @@ class Synera_BatteryPackCalculator_BasePage {
             return false;
         }
     }
+
+    get progressIndicator() {
+        return browser.$('.v-progress-circular'); // Update this selector based on the actual class or ID
+    }
+
+    async waitForProgressIndicatorToDisappear() {
+        await browser.waitUntil(
+            async () => !(await this.progressIndicator.isDisplayed()),
+            {
+                timeout: 60000, // Adjust the timeout value as needed
+                timeoutMsg: 'Expected progress indicator to disappear'
+            }
+        );
+    }
 }
 
 export default Synera_BatteryPackCalculator_BasePage;

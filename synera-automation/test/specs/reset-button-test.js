@@ -4,18 +4,18 @@ import DefaultValues from "../constants/default-values";
 describe('Reset Button', () => {
     it('should reset all input field to default values', async () => {
         
-    let formInputPage = new Synera_BatteryPackCalculator_Page();
-   let pageLoaded= await formInputPage.open();
+    let page = new Synera_BatteryPackCalculator_Page();
+   let pageLoaded= await page.open();
    expect(pageLoaded).to.be.true;
  
-  await formInputPage.IntializeInputComponents();
+  await page.IntializeInputComponents();
 
   //declare all components
-let designspace_comboBox= formInputPage.designSpaceInputComboxBox;
-let batterycelltype_comboBox = formInputPage.batteryCellInputComboBox;
- let coolingplate_slider = formInputPage.coolingplateSlider;
- let spacingcell_slider = formInputPage.spaceingcellsSlider;
- let resetButton = formInputPage.resetButton;
+let designspace_comboBox= page.designSpaceInputComboxBox;
+let batterycelltype_comboBox = page.batteryCellInputComboBox;
+ let coolingplate_slider = page.coolingplateSlider;
+ let spacingcell_slider = page.spaceingcellsSlider;
+ let resetButton = page.resetButton;
 
  //update values
  await designspace_comboBox.setComboBoxText("Panel (longer computation time)");
