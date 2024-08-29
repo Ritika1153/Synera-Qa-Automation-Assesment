@@ -1,12 +1,14 @@
 import { browser } from '@wdio/globals';
-
+import CookieOkButton from '../components/form-components/buttons/cookie-okay-button';
 const url = "https://run.synera.io/frontend/?workflow=Fu5d28Th65Rx0HtB0OI9fnpfwMkmf9w8JZE8vja4bqA&auth=cmVhZG9ubHk6bHUwcFJzMHdRQkpaTVN6YThXd0h4TW4xRklLeUdtc2g=";
 
 class Synera_BatteryPackCalculator_Page {
     async open() {
         try {
             await browser.url(url);
+            await this.closeCookieSection();
             const pageLoaded = await this.waitForPageLoad();
+
             await this.closeToolTip();
             return pageLoaded;
         } catch (error) {
@@ -15,6 +17,11 @@ class Synera_BatteryPackCalculator_Page {
         }
     }
 
+    async closeCookieSection()
+    {
+        const button  = new CookieOkButton(browser);
+       await button.clickIfDisplayed();
+    }
     async closeToolTip()
     {
         const closeButtonSelector = 'img.synera-gripper-tooltip-close';
