@@ -5,6 +5,7 @@ const url = "https://run.synera.io/frontend/?workflow=Fu5d28Th65Rx0HtB0OI9fnpfwM
 class Synera_BatteryPackCalculator_BasePage {
     async open() {
         try {
+            await browser.maximizeWindow()
             await browser.url(url);
             await this.closeCookieSection();
             const pageLoaded = await this.waitForPageLoad();
@@ -53,19 +54,33 @@ class Synera_BatteryPackCalculator_BasePage {
         }
     }
 
-    get progressIndicator() {
-        return browser.$('.v-progress-circular'); // Update this selector based on the actual class or ID
-    }
+   
+    
 
     async waitForProgressIndicatorToDisappear() {
         await browser.waitUntil(
-            async () => !(await this.progressIndicator.isDisplayed()),
+            async () => {
+                const progressBar = await browser.$('.v-progress-linear__determinate.bg-success');
+    
+                const widthStyle = await progressBar.getAttribute('style');
+    
+                const widthMatch = widthStyle.match(/width:\s*(\d+(\.\d+)?)%/);
+                const widthValue = widthMatch ? parseFloat(widthMatch[1]) : 0;
+    
+                return widthValue === 100;
+            },
             {
-                timeout: 60000, // Adjust the timeout value as needed
+                timeout: 6000000, 
+                interval: 500, 
                 timeoutMsg: 'Expected progress indicator to disappear'
             }
         );
+    
+        // If the condition is met within the timeout, return true
+        return true;
     }
+    
+    
 }
 
 export default Synera_BatteryPackCalculator_BasePage;

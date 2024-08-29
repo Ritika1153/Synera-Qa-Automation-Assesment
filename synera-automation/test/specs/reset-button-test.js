@@ -20,7 +20,7 @@ let batterycelltype_comboBox = page.batteryCellInputComboBox;
  //update values
  await designspace_comboBox.setComboBoxText("Panel (longer computation time)");
  await batterycelltype_comboBox.setComboBoxText("L52.4_C2.3");
- await coolingplate_slider.setSliderValue("19")
+ await coolingplate_slider.setSliderValue("10")
  await spacingcell_slider.setSliderValue("7");
 
 // print values after update debug purpose

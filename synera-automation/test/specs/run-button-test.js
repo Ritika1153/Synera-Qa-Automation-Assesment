@@ -95,12 +95,6 @@ expect(numberofCells_value).to.equal("712");
   expect(total_price_value).to.equal("1958");
   expect(total_weight_value).to.equal("12.1");
   
-   
-// console.log("label value",await page.numberofcells_label.getText() ,
-
-//     await page.capacity_label.getText() , await page.totalprice_label.getText(),
-//     await page.totalweight_label.getText()
-// );
 
     })
 })

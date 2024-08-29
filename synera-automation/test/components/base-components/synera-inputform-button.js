@@ -9,7 +9,7 @@ class SyneraInputFormButton{
             const element = await $(this.button);
             await element.waitForDisplayed();
             await element.click();
-
+           
            
         } catch (error) {
             console.error("Error occurred while clicking the button:", error);
