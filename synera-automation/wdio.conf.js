@@ -1,3 +1,4 @@
+import path from "node:path";
 export const config = {
     //
     // ====================
@@ -57,6 +58,17 @@ export const config = {
             ]
         }
     }],
+
+    services: [
+        // Other services...
+        ['visual', {
+          baselineFolder: path.join(process.cwd(), '/test/screenshots/baseline/'),
+          formatImageName: '{tag}-{logName}-{width}x{height}',
+          screenshotPath: path.join(process.cwd(), '/test/screenshots/'),
+          savePerInstance: true,
+          
+        }],
+      ],
 
     //
     // ===================
