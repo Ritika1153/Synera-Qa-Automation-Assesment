@@ -7,7 +7,7 @@ class SyneraOutputLabel{
 
     async getText()
     {
-            const element = await browser.$(this.button);
+            const element = await browser.$(this.label);
             await element.waitForDisplayed();
             
             const labelelement = await element.$('.flex-0-1');
