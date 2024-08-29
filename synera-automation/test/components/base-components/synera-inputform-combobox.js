@@ -1,7 +1,6 @@
 class SyneraInputFormComboBox {
     constructor(testId, browser) {
         this.comboBox = `[data-testid="${testId}"]`;
-        this.browser = browser;
     }
 
     async getComboBoxText() {

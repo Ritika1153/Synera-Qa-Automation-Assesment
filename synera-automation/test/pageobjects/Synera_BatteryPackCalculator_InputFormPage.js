@@ -1,14 +1,14 @@
 import DesignSpaceInputComboBox from "../components/form-components/combo-boxes/designspace-input-comboBox";
-import Synera_BatteryPackCalculator_Page from "./synera_batterypackcalculator_page";
 import BatteryCellTypeInputComboBox from "../components/form-components/combo-boxes/batterycelltype_input-combobox";
 import CoolingPlate_Slider from "../components/form-components/sliders/CoolingPlate-Slider";
 import SpacingCells_Slider from "../components/form-components/sliders/SpacingCells-Slider";
 import ResetButton from "../components/form-components/buttons/reset-button";
+import Synera_BatteryPackCalculator_Page from "./synera_batterypackcalculator_page";
 class Synera_BatteryPackCalculator_InputFormPage extends Synera_BatteryPackCalculator_Page {
  
     constructor()
     {
-        super();
+       super();
         this.designSpaceInputComboxBox= null;
         this.batteryCellInputComboBox = null;
         this.coolingplateSlider = null;
@@ -28,25 +28,25 @@ class Synera_BatteryPackCalculator_InputFormPage extends Synera_BatteryPackCalcu
 
     getResetButton()
     {
-        return new ResetButton(this.browser)
+        return new ResetButton()
     }
 
     getCoolingPlateSlider()
     {
-    return new CoolingPlate_Slider(this.browser)
+    return new CoolingPlate_Slider()
     }
 
     getSpaceCellsSlider()
     {
-     return new SpacingCells_Slider(this.browser)
+     return new SpacingCells_Slider()
     }
 
     getDesignSpaceComboBox() {
-        return new DesignSpaceInputComboBox(this.browser)
+        return new DesignSpaceInputComboBox()
     }
     getBatteryCellTypeComboBox()
     {
-        return new BatteryCellTypeInputComboBox(this.browser);
+        return new BatteryCellTypeInputComboBox();
     }
 
     

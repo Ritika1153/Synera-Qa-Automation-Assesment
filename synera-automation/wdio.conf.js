@@ -43,7 +43,7 @@ export const config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -96,6 +96,9 @@ export const config = {
     //
     // Default request retries count
     connectionRetryCount: 3,
+
+      injectGlobals: true,
+    
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance

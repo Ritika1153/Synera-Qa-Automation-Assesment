@@ -1,7 +1,7 @@
 class SyneraInputFormSlider{
-    constructor(testId,browser) {
+    constructor(testId) {
         this.slider = `[data-testid="${testId}"]`;
-        this.browser = browser;
+
     }
 
     async getSliderText() {

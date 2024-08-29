@@ -3,10 +3,10 @@ import SyneraInputFormButton from "../../base-components/synera-inputform-button
 
 class CookieOkButton extends SyneraInputFormButton{
 
-    constructor(browser)
+    constructor()
     {
         const resetButton_testId = "btnOkay";
-        super(resetButton_testId ,browser);  
+        super(resetButton_testId);  
     }
 }
 
