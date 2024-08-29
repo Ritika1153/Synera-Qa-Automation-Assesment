@@ -26,6 +26,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
-      working-directory: synera-automation
-    - run: npm run wdio
+    - run: |
+        cd synera-automation
+        npm install
+    - run: |
+        cd synera-automation
+        npm run wdio
