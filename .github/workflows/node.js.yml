@@ -27,4 +27,4 @@ jobs:
         npm install
     - run: |
         cd synera-automation
-        npm run wdio
+        npm run wdio wdio-github.conf.js
