@@ -1,56 +1,85 @@
-import { browser } from '@wdio/globals';
-import CookieOkButton from '../components/form-components/buttons/cookie-okay-button';
-const url = "https://run.synera.io/frontend/?workflow=Fu5d28Th65Rx0HtB0OI9fnpfwMkmf9w8JZE8vja4bqA&auth=cmVhZG9ubHk6bHUwcFJzMHdRQkpaTVN6YThXd0h4TW4xRklLeUdtc2g=";
-
-class Synera_BatteryPackCalculator_Page {
-    async open() {
-        try {
-            await browser.url(url);
-            await this.closeCookieSection();
-            const pageLoaded = await this.waitForPageLoad();
-
-            await this.closeToolTip();
-            return pageLoaded;
-        } catch (error) {
-            console.error('Failed to open page:', error.message);
-            return false;
-        }
+import DesignSpaceInputComboBox from "../components/form-components/combo-boxes/designspace-input-comboBox";
+import BatteryCellTypeInputComboBox from "../components/form-components/combo-boxes/batterycelltype_input-combobox";
+import CoolingPlate_Slider from "../components/form-components/sliders/CoolingPlate-Slider";
+import SpacingCells_Slider from "../components/form-components/sliders/SpacingCells-Slider";
+import ResetButton from "../components/form-components/buttons/reset-button";
+import Synera_BatteryPackCalculator_BasePage from "./synera_batterypackcalculator_base_page";
+class Synera_BatteryPackCalculator_Page extends Synera_BatteryPackCalculator_BasePage {
+ 
+    constructor()
+    {
+       super();
+        this.designSpaceInputComboxBox= null;
+        this.batteryCellInputComboBox = null;
+        this.coolingplateSlider = null;
+        this.spaceingcellsSlider = null;
+        this.resetButton = null;
+        this.numberofcells_label = null;
+        this.capacity_label = null;
+        this.totalprice_label= null;
+        this.totalweight_label= null;
     }
 
-    async closeCookieSection()
+    // create seperate method intialize because the browser must be intialized before calling this thats why not called in consturctor
+     async IntializeInputComponents()
     {
-        const button  = new CookieOkButton(browser);
-       await button.clickIfDisplayed();
-    }
-    async closeToolTip()
-    {
-        const closeButtonSelector = 'img.synera-gripper-tooltip-close';
-        const closeButton = await browser.$(closeButtonSelector);
+        this.designSpaceInputComboxBox = this.getDesignSpaceComboBox();
+        this.batteryCellInputComboBox = this.getBatteryCellTypeComboBox();
+        this.coolingplateSlider = this.getCoolingPlateSlider();
+        this.spaceingcellsSlider = this.getSpaceCellsSlider();
+        this.resetButton = this.getResetButton();
         
-        const isButtonVisible = await closeButton.isDisplayed();
-        if (isButtonVisible) 
-            await closeButton.click();
     }
-    async waitForPageLoad() {
-        const loadingOverlay = await browser.$('div.v-overlay--active');
+    async IntitalizeOutputOutputComponents()
+    {
+        this.numberofcells_label =  this.getNumberofCellslabel();
+        this.capacity_label = this.getCapacitylabel();
+        this.totalprice_label = this.getTotalPricelabel();
+        this.totalweight_label = this.getTotalWeightlabel();
+    }
 
-        try {
-            await browser.waitUntil(async () => {
-                const isDisplayed = await loadingOverlay.isDisplayed();
-                console.log("IsDisplayed:", isDisplayed);
-                return !isDisplayed; 
-            }, {
-                timeout: 30000, // Increase timeout if necessary
-                interval: 500,
-                timeoutMsg: 'Loading overlay did not disappear within the expected time.'
-            });
+    getResetButton()
+    {
+        return new ResetButton()
+    }
 
-            console.log('Page has finished loading.');
-            return true;
-        } catch (error) {
-            console.error('Error while waiting for page load:', error.message);
-            return false;
-        }
+    getCoolingPlateSlider()
+    {
+    return new CoolingPlate_Slider()
+    }
+
+    getSpaceCellsSlider()
+    {
+     return new SpacingCells_Slider()
+    }
+
+    getDesignSpaceComboBox() {
+        return new DesignSpaceInputComboBox()
+    }
+    getBatteryCellTypeComboBox()
+    {
+        return new BatteryCellTypeInputComboBox();
+    }
+
+    
+    getNumberofCellslabel()
+    {
+        return new NumberOfCellsLabel();
+    }
+
+    getCapacitylabel(){
+
+        return new CapacityLabel();
+    }
+
+    getTotalPricelabel()
+    {
+        return new TotalPriceLabel();
+    }
+
+    getTotalWeightlabel()
+    {
+        return new TotalWeightLabel();
     }
 }
 

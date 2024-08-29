@@ -1,15 +1,14 @@
-
-import Synera_BatteryPackCaclulator_InputFormPage from "../pageobjects/Synera_BatteryPackCalculator_InputFormPage";
+import Synera_BatteryPackCalculator_Page from '../pageobjects/synera_batterypackcalculator_page';
 import { expect  } from 'chai'
 import DefaultValues from "../constants/default-values";
 describe('Reset Button', () => {
     it('should reset all input field to default values', async () => {
         
-    let formInputPage = new Synera_BatteryPackCaclulator_InputFormPage();
+    let formInputPage = new Synera_BatteryPackCalculator_Page();
    let pageLoaded= await formInputPage.open();
    expect(pageLoaded).to.be.true;
  
-  await formInputPage.Intialize();
+  await formInputPage.IntializeInputComponents();
 
   //declare all components
 let designspace_comboBox= formInputPage.designSpaceInputComboxBox;
