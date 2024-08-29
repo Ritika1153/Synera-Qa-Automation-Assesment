@@ -34,7 +34,6 @@ class SyneraInputFormButton{
       
         const switchElement = await browser.$(this.button);
         const inputControl = await switchElement.$('.v-input__control')
-        const toggleButtton  = await inputControl.$('.v-switch__track')
         await inputControl.click();
     }
 
