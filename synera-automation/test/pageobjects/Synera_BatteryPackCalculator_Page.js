@@ -7,6 +7,7 @@ class Synera_BatteryPackCalculator_Page {
         try {
             await browser.url(url);
             const pageLoaded = await this.waitForPageLoad();
+            await this.closeToolTip();
             return pageLoaded;
         } catch (error) {
             console.error('Failed to open page:', error.message);
@@ -14,6 +15,15 @@ class Synera_BatteryPackCalculator_Page {
         }
     }
 
+    async closeToolTip()
+    {
+        const closeButtonSelector = 'img.synera-gripper-tooltip-close';
+        const closeButton = await browser.$(closeButtonSelector);
+        
+        const isButtonVisible = await closeButton.isDisplayed();
+        if (isButtonVisible) 
+            await closeButton.click();
+    }
     async waitForPageLoad() {
         const loadingOverlay = await browser.$('div.v-overlay--active');
 
