@@ -9,6 +9,7 @@ import TotalWeightLabel from "../components/form-components/labels/total-weight-
 import CapacityLabel from "../components/form-components/labels/capacity-label";
 import Synera_BatteryPackCalculator_BasePage from "./synera_batterypackcalculator_base_page";
 import RunButton from "../components/form-components/buttons/run-button";
+import AutoRunButton from "../components/form-components/buttons/auto-run";
 class Synera_BatteryPackCalculator_Page extends Synera_BatteryPackCalculator_BasePage {
  
     constructor()
@@ -43,9 +44,14 @@ class Synera_BatteryPackCalculator_Page extends Synera_BatteryPackCalculator_Bas
         this.totalprice_label = this.getTotalPricelabel();
         this.totalweight_label = this.getTotalWeightlabel();
         this.runButton = this.getRunButton();
+        this.autoRunButton  = this.getAutoRunButton();
     }
 
 
+    getAutoRunButton()
+    {
+        return new AutoRunButton();
+    }
     getRunButton()
     {
         return new RunButton()

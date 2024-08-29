@@ -28,6 +28,17 @@ class SyneraInputFormButton{
             console.error("Error occurred while clicking the button:", error);
         }
     }
+
+    async Toggle()
+    {
+      
+        const switchElement = await browser.$(this.button);
+        const inputControl = await switchElement.$('.v-input__control')
+        const toggleButtton  = await inputControl.$('.v-switch__track')
+        await inputControl.click();
+    }
+
+   
 }
   
 

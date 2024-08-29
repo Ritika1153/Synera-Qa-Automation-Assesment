@@ -62,15 +62,16 @@ class Synera_BatteryPackCalculator_BasePage {
             async () => {
                 const progressBar = await browser.$('.v-progress-linear__determinate.bg-success');
     
+            
                 const widthStyle = await progressBar.getAttribute('style');
     
                 const widthMatch = widthStyle.match(/width:\s*(\d+(\.\d+)?)%/);
                 const widthValue = widthMatch ? parseFloat(widthMatch[1]) : 0;
-    
-                return widthValue === 100;
+                console.log("width value",widthValue)
+                return widthValue === 100 || !progressBar.isDisplayed();
             },
             {
-                timeout: 6000000, 
+                timeout: 600000, 
                 interval: 500, 
                 timeoutMsg: 'Expected progress indicator to disappear'
             }
