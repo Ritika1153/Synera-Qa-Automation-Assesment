@@ -71,7 +71,7 @@ tests/typings/**/dist
 packages/**/cjs/
 !packages/**/src/cjs/
 !packages/**/cjs/package.json
-
+package-lock.json
 /*.mjs
 /*.ts
 !.eslintrc.js
