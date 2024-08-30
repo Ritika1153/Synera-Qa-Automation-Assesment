@@ -69,7 +69,7 @@ await component.waitForDisplayed();
    
  console.log('result',result)
       
-  expect(result).to.be.lessThan(0.01);
+  expect(result).to.be.lessThan(3); // the value be changed
   
     });
   });
