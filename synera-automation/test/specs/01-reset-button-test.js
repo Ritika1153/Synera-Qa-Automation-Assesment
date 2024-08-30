@@ -1,6 +1,29 @@
 import Synera_BatteryPackCalculator_Page from '../pageobjects/synera_batterypackcalculator_page';
 import { expect  } from 'chai'
 import DefaultValues from "../constants/default-values";
+
+
+/* 
+This is an reset button test cases
+
+So whatever the values be when clicked reset will back to default values
+
+//Change Values
+
+"Panel (longer computation time)
+ "L52.4_C2.3"
+ "10"
+ "7";
+
+
+ after Clicking reset button these will be values
+  DESIGN_SPACE: 'Box',
+   BATTERY_CELL_TYPE: 'L65.15_C2.5',
+    COOLING_PLATE_HEIGHT: '8',
+    SPACING_BTW_CELLS : '2'
+
+*/
+
 describe('Reset Button', () => {
     it('should reset all input field to default values', async () => {
         
@@ -10,6 +33,7 @@ describe('Reset Button', () => {
  
   await page.IntializeInputComponents();
 
+  
   //declare all components
 let designspace_comboBox= page.designSpaceInputComboxBox;
 let batterycelltype_comboBox = page.batteryCellInputComboBox;
