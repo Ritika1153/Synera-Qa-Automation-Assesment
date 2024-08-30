@@ -35,8 +35,6 @@ Total Weight :13
 
 
 
-Now lets change the cooling plate_height to 9 from 8
-
 
 */
 
